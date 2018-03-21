@@ -9,6 +9,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
 
 " Theming
 Plug 'morhetz/gruvbox'
@@ -38,6 +39,7 @@ set clipboard=unnamed
 
 
 nnoremap <leader>rl :source ~/.config/nvim/init.vim<cr>
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " # Split {
 nnoremap <C-J> <C-W><C-J>
