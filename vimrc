@@ -10,6 +10,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
 
 " Theming
 Plug 'morhetz/gruvbox'
@@ -69,6 +70,13 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+
+" " ALE
+let g:ale_linters = {'javascript': ['standard']}
+let g:ale_fixers = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fix_on_save = 1
 
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd FileType javascript set shiftwidth=2
