@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
 
 " Theming
 Plug 'morhetz/gruvbox'
@@ -52,6 +53,7 @@ nnoremap <C-H> <C-W><C-H>
 " # NERDTree  {
 noremap <leader>bw :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeShowBookmarks = 1
 " }
 
 " # Folding {
@@ -76,7 +78,7 @@ let g:ale_linters = {'javascript': ['standard']}
 let g:ale_fixers = {
 \   'javascript': ['standard'],
 \}
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd FileType javascript set shiftwidth=2
