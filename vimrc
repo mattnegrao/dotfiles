@@ -59,6 +59,8 @@ nnoremap <C-Right> :tabnext<CR>
 noremap <leader>bw :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeShowLineNumbers = 1
+autocmd FilesType nerdtree setlocal relativenumber
 " }
 
 " # Folding {
