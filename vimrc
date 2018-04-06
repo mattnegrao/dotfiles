@@ -50,6 +50,11 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " }
 
+" # Tabs {
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+" }
+
 " # NERDTree  {
 noremap <leader>bw :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
@@ -78,7 +83,7 @@ let g:ale_linters = {'javascript': ['standard']}
 let g:ale_fixers = {
 \   'javascript': ['standard'],
 \}
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd FileType javascript set shiftwidth=2
