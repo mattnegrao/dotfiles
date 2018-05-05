@@ -12,22 +12,25 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
 
 " Theming
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 " }
 
+let g:airline#extensions#tabline#enabled = 1
 
 " # Basic config {
 let mapleader=","
 
-colorscheme gruvbox
-set background=dark
-let g:airline_theme='gruvbox'
+colorscheme PaperColor
+set background=light
+let g:airline_theme='papercolor'
 
 set hidden
 set number
@@ -35,8 +38,8 @@ set relativenumber
 set mouse=a
 set inccommand=split
 set incsearch
-set nohlsearch
-set clipboard=unnamed
+set hlsearch
+set clipboard+=unnamedplus
 " }
 
 
@@ -60,7 +63,10 @@ noremap <leader>bw :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowLineNumbers = 1
-autocmd FilesType nerdtree setlocal relativenumber
+" }
+
+" # Ack {
+nnoremap <leader>f :Ack!<space>
 " }
 
 " # Folding {
@@ -94,12 +100,15 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.bluep set fuletype=markdown
 autocmd FileType ruby set shiftwidth=2
 autocmd FileType ruby set tabstop=2
+autocmd FileType html set shiftwidth=2
+autocmd FileType html set tabstop=2
 " }
 
+autocmd BufWritePre * %s/\s\+$//e
 
 " # Column 80 {
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=60
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
