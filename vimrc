@@ -24,18 +24,21 @@ call plug#end()
 " }
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
 
 " # Basic config {
 let mapleader=","
 
 colorscheme PaperColor
-set background=light
-let g:airline_theme='papercolor'
+set background=dark
+let g:airline_theme='minimalist'
 
 set hidden
 set number
 set relativenumber
-set mouse=a
+set mouse=
 set inccommand=split
 set incsearch
 set hlsearch
@@ -44,7 +47,7 @@ set clipboard+=unnamedplus
 
 
 nnoremap <leader>rl :source ~/.config/nvim/init.vim<cr>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 
 " # Split {
 nnoremap <C-J> <C-W><C-J>
@@ -57,6 +60,9 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 " }
+"
+nnoremap <C-Up> :bn<CR>
+nnoremap <C-Down> :bp<CR>
 
 " # NERDTree  {
 noremap <leader>bw :NERDTreeToggle<CR>
