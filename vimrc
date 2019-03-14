@@ -5,7 +5,8 @@
 call plug#begin()
 
 " Essentials
-Plug 'sheerun/vim-polyglot'
+";Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
@@ -13,6 +14,10 @@ Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'mileszs/ack.vim'
+Plug 'eugen0329/vim-esearch'
+" Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Theming
 Plug 'morhetz/gruvbox'
@@ -22,11 +27,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 " }
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
 
 " # Basic config {
 let mapleader=","
@@ -45,6 +45,12 @@ set hlsearch
 set clipboard+=unnamedplus
 " }
 
+autocmd FileType html,css,javascript.jsx EmmetInstall
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 nnoremap <leader>rl :source ~/.config/nvim/init.vim<cr>
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
@@ -71,8 +77,14 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowLineNumbers = 1
 " }
 
-" # Ack {
-nnoremap <leader>f :Ack!<space>
+" # esearch {
+let g:esearch = {
+  \ 'adapter':    'ag',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
 " }
 
 " # Folding {
@@ -112,7 +124,7 @@ autocmd FileType html set tabstop=2
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" # Column 80 {
+" # Column 60 {
 if exists('+colorcolumn')
     set colorcolumn=60
 else
