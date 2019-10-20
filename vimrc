@@ -5,7 +5,7 @@
 call plug#begin()
 
 " Essentials
-";Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -16,8 +16,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mileszs/ack.vim'
 Plug 'eugen0329/vim-esearch'
 " Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'pangloss/vim-javascript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'maxmellon/vim-jsx-pretty'
 
 " Theming
 Plug 'morhetz/gruvbox'
