@@ -1,27 +1,50 @@
-" Author: Matheus Moraes
-" " https://github.com/matheusmoraes
+" Author: Matheus Negrão
+" " https://github.com/mattnegrao
 
 " # Plugins {
 call plug#begin()
 
 " Essentials
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'mileszs/ack.vim'
 Plug 'eugen0329/vim-esearch'
-" Plug 'mxw/vim-jsx'
-" Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color'
+Plug 'alvan/vim-closetag'
+
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'elixir-editors/vim-elixir'
+
+
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+
 
 " Theming
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -33,8 +56,11 @@ call plug#end()
 let mapleader=","
 
 colorscheme PaperColor
+syntax enable
+" let g:solarized_termcolors=256
 set background=dark
-let g:airline_theme='minimalist'
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts = 1
 
 set hidden
 set number
@@ -45,6 +71,16 @@ set incsearch
 set hlsearch
 set clipboard+=unnamedplus
 " }
+
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.tsx'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+" let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
 
 autocmd FileType html,css,javascript.jsx EmmetInstall
 let g:user_emmet_settings = {
@@ -105,16 +141,14 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
-" " ALE
-let g:ale_linters = {'javascript': ['standard']}
-let g:ale_fixers = {
-\   'javascript': ['standard'],
-\}
-let g:ale_fix_on_save = 1
 
-autocmd BufRead,BufNewFile *.json set filetype=javascript
+" autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
+autocmd FileType typescript set shiftwidth=2
+autocmd FileType typescript set tabstop=2
+autocmd FileType typescriptreact set shiftwidth=2
+autocmd FileType typescriptreact set tabstop=2
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.bluep set fuletype=markdown
 autocmd FileType ruby set shiftwidth=2
