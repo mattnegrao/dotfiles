@@ -16,6 +16,9 @@ Plug 'eugen0329/vim-esearch'
 Plug 'ap/vim-css-color'
 Plug 'alvan/vim-closetag'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 
@@ -27,7 +30,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'elixir-editors/vim-elixir'
 
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver'
   \ ]
@@ -70,6 +73,7 @@ set inccommand=split
 set incsearch
 set hlsearch
 set clipboard+=unnamedplus
+set mmp=5000 " Fix syntax highlight on large files
 " }
 
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -108,7 +112,8 @@ nnoremap <C-Up> :bn<CR>
 nnoremap <C-Down> :bp<CR>
 
 " # NERDTree  {
-noremap <leader>bw :NERDTreeToggle<CR>
+noremap <leader>bb :NERDTreeToggle<CR>
+noremap <leader>bf :NERDTreeFocus<CR>
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowLineNumbers = 1
@@ -123,6 +128,12 @@ let g:esearch = {
   \ 'use':        ['visual', 'hlsearch', 'last'],
   \}
 " }
+"
+" " Find files using Telescope command-line sugar.
+nnoremap <leader>fd <cmd>Telescope find_files<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " # Folding {
 nnoremap <Space> za
