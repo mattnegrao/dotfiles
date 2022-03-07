@@ -132,7 +132,7 @@ let g:esearch = {
 " " Find files using Telescope command-line sugar.
 nnoremap <leader>fd <cmd>Telescope find_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " # Folding {
